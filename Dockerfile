@@ -9,7 +9,7 @@ RUN /usr/sbin/install-node.sh
 
 
 # basics
-RUN apk add openssh-server git-core openssh-client curl
+RUN apk add openssh-server openssh-client curl
 RUN apk add nano
 RUN apk add build-essential
 RUN apk add openssl libreadline6 libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
