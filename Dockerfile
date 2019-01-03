@@ -6,14 +6,13 @@ LABEL maintainer="Aketza Daza <muchachopolo@gmail.com>"
 ADD install-node.sh /usr/sbin/install-node.sh
 RUN ["chmod", "+x", "/usr/sbin/install-node.sh"]
 RUN /usr/sbin/install-node.sh
-# turn on universe packages
-RUN apt-get update
+
 
 # basics
-RUN apt-get install -y openssh-server git-core openssh-client curl
-RUN apt-get install -y nano
-RUN apt-get install -y build-essential
-RUN apt-get install -y openssl libreadline6 libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+RUN apk add openssh-server git-core openssh-client curl
+RUN apk add nano
+RUN apk add build-essential
+RUN apk add openssl libreadline6 libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 
 # install RVM, Ruby, and Bundler
 RUN \curl -L https://get.rvm.io | bash -s stable
