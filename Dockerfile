@@ -1,13 +1,12 @@
 # DOCKER
 FROM hitalos/php:latest
-LABEL maintainer="nickaguilarh <nickaguilarh@gmail.com>"
+LABEL maintainer="Aketza Daza <muchachopolo@gmail.com>"
 
 # Download and install NodeJS
 ADD install-node.sh /usr/sbin/install-node.sh
 RUN ["chmod", "+x", "/usr/sbin/install-node.sh"]
 RUN /usr/sbin/install-node.sh
 # turn on universe packages
-RUN echo "deb http://archive.ubuntu.com/ubuntu raring main universe" > /etc/apt/sources.list
 RUN apt-get update
 
 # basics
@@ -30,6 +29,7 @@ RUN apk add --update libxml2-dev
 RUN docker-php-ext-install soap bcmath pcntl
 
 WORKDIR /var/www
+CMD composer  --port=80 --host=0.0.0.0
 CMD php ./artisan serve --port=80 --host=0.0.0.0
 EXPOSE 80
 HEALTHCHECK --interval=1m CMD curl -f http://localhost/ || exit 1
