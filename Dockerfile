@@ -9,15 +9,14 @@ RUN /usr/sbin/install-node.sh
 
 
 # basics
+RUN apk update && apk upgrade && apk --update add \
+    ruby ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
+    libstdc++ tzdata bash ca-certificates \
+    &&  echo 'gem: --no-document' > /etc/gemrc
+    
 RUN apk add openssh-server openssh-client curl
 RUN apk add nano
 RUN apk add openssl curl libxml2-dev libxslt-dev autoconf ncurses-dev automake libtool bison subversion
-
-# install RVM, Ruby, and Bundler
-RUN \curl -L https://get.rvm.io | bash -s stable
-RUN /bin/bash -l -c "rvm requirements"
-RUN /bin/bash -l -c "rvm install 2.0"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 
 
 # Install pre-required extensions libraries
