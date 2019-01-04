@@ -10,7 +10,7 @@ RUN /usr/sbin/install-node.sh
 
 # basics
 RUN apk update && apk upgrade && apk --update add \
-    build-base libc-dev linux-headers ruby ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
+    build-base libc-dev linux-headers ruby ruby-dev ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
     libstdc++ tzdata bash ca-certificates \
     &&  echo 'gem: --no-document' > /etc/gemrc
 
