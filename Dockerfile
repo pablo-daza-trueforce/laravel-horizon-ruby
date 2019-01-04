@@ -28,6 +28,8 @@ RUN apk add --update libxml2-dev
 RUN docker-php-ext-install soap bcmath pcntl
 
 WORKDIR /var/www
+RUN gem install rake
+RUN gem install zendesk_apps_tools
 CMD composer  --port=80 --host=0.0.0.0
 CMD php ./artisan serve --port=80 --host=0.0.0.0
 EXPOSE 80
